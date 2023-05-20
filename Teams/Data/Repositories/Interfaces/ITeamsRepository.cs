@@ -15,5 +15,7 @@ namespace Data.Repositories.Interfaces
         void Update(Team entity);
 
         Task DeleteAsync(string id);
+
+        Task SaveAsync();
     }
 }

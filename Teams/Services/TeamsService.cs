@@ -47,7 +47,7 @@ namespace Services
                 _logger.LogError(e.Message);
             }
 
-            return result.OrderBy(x => x.Score).ToList();
+            return result.OrderByDescending(x => x.Score).ToList();
         }
 
         public List<TeamsDto> GetTeams()
@@ -107,6 +107,7 @@ namespace Services
                     Name = entity.Name
                 };
                 await _repository.CreateAsync(team);
+                await _repository.SaveAsync();
             }
             catch (Exception e)
             {
@@ -114,7 +115,7 @@ namespace Services
             }
         }
 
-        public void Update(TeamsDto entity)
+        public async Task Update(TeamsDto entity)
         {
             try
             {
@@ -127,6 +128,7 @@ namespace Services
                     Name = entity.Name
                 };
                 _repository.Update(team);
+                await _repository.SaveAsync();
             }
             catch (Exception e)
             {
@@ -139,6 +141,7 @@ namespace Services
             try
             {
                 await _repository.DeleteAsync(id);
+                await _repository.SaveAsync();
             }
             catch (Exception e)
             {

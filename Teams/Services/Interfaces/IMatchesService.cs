@@ -14,7 +14,7 @@ namespace Services.Interfaces
 
         Task CreateAsync(MatchDto entity);
 
-        void Update(MatchDto entity);
+        Task Update(MatchDto entity);
 
         Task DeleteAsync(string id);
 

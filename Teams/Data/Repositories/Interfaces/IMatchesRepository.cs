@@ -15,5 +15,7 @@ namespace Data.Repositories.Interfaces
         void Update(Match entity);
 
         Task DeleteAsync(string id);
+
+        Task SaveAsync();
     }
 }

@@ -75,11 +75,11 @@ namespace Teams.Controllers
         }
 
         [HttpPut]
-        public IActionResult UpdateMatch([FromForm] MatchDto matchDto)
+        public async Task<IActionResult> UpdateMatch([FromForm] MatchDto matchDto)
         {
             try
             {
-                _services.Update(matchDto);
+                await _services.Update(matchDto);
                 return Ok();
             }
             catch (Exception e)

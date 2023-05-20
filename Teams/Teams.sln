@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33712.159
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teams", "Teams\Teams\Teams.csproj", "{A8DE6480-3557-4104-8A59-9B4C093B3353}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Teams", "Teams\Teams\Teams.csproj", "{A8DE6480-3557-4104-8A59-9B4C093B3353}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{3BF4207F-1EB5-48F8-841D-355375548B52}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{3BF4207F-1EB5-48F8-841D-355375548B52}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{8AC69B84-6DC8-4FC8-B251-90BC7AE56D5B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Services.csproj", "{8AC69B84-6DC8-4FC8-B251-90BC7AE56D5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{23B34AAA-98B3-4A8E-9283-D640372EC1D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{8AC69B84-6DC8-4FC8-B251-90BC7AE56D5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8AC69B84-6DC8-4FC8-B251-90BC7AE56D5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8AC69B84-6DC8-4FC8-B251-90BC7AE56D5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23B34AAA-98B3-4A8E-9283-D640372EC1D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23B34AAA-98B3-4A8E-9283-D640372EC1D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23B34AAA-98B3-4A8E-9283-D640372EC1D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23B34AAA-98B3-4A8E-9283-D640372EC1D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

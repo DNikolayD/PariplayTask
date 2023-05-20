@@ -85,5 +85,10 @@ namespace Data.Repositories
             }
 
         }
+
+        public async Task SaveAsync()
+        {
+            await _context.SaveChangesAsync();
+        }
     }
 }

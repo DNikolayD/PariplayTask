@@ -17,10 +17,13 @@ namespace Services
 
         private readonly ILogger<MatchesService> _logger;
 
-        public MatchesService(IMatchesRepository repository, ILogger<MatchesService> logger)
+        private readonly ITeamsRepository _teamsRepository;
+
+        public MatchesService(IMatchesRepository repository, ILogger<MatchesService> logger, ITeamsRepository teamsRepository)
         {
             _repository = repository;
             _logger = logger;
+            _teamsRepository = teamsRepository;
         }
 
         public List<MatchDto> GetMatchesByTeamId(string id)
@@ -83,7 +86,7 @@ namespace Services
             {
                 _logger.LogError(e.Message);
             }
-
+ 
             return new MatchDto();
         }
 
@@ -98,7 +101,29 @@ namespace Services
                     IdOfFirstTeam = entity.IdOfFirstTeam,
                     IdOfWinner = entity.IdOfWinner
                 };
+                var teamOne = await _teamsRepository.GetByIdAsync(match.IdOfFirstTeam);
+                var teamTwo = await _teamsRepository.GetByIdAsync(match.IdOfSecondTeam);
+                if (string.IsNullOrWhiteSpace(match.IdOfWinner))
+                {
+                    teamOne.Score += 1;
+                    teamTwo.Score += 1;
+                }
+                else
+                {
+                    if (teamOne.Id == match.IdOfWinner)
+                    {
+                        teamOne.Score += 3;
+                    }
+                    else
+                    {
+                        teamTwo.Score += 3;
+                    }
+                }
+                _teamsRepository.Update(teamOne);
+                _teamsRepository.Update(teamTwo);
                 await _repository.CreateAsync(match);
+                await _repository.SaveAsync();
+                await _teamsRepository.SaveAsync();
             }
             catch (Exception e)
             {
@@ -106,7 +131,7 @@ namespace Services
             }
         }
 
-        public void Update(MatchDto entity)
+        public async Task Update(MatchDto entity)
         {
             try
             {
@@ -118,6 +143,7 @@ namespace Services
                     IdOfWinner = entity.IdOfWinner
                 };
                 _repository.Update(match);
+                await _repository.SaveAsync();
             }
             catch (Exception e)
             {
@@ -130,6 +156,7 @@ namespace Services
             try
             {
                 await _repository.DeleteAsync(id);
+                await _repository.SaveAsync();
             }
             catch (Exception e)
             {

@@ -83,5 +83,10 @@ namespace Data.Repositories
                 _logger.LogError(e.Message);
             }
         }
+
+        public async Task SaveAsync()
+        {
+            await _context.SaveChangesAsync();
+        }
     }
 }

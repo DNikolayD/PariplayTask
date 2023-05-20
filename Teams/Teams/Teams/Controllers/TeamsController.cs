@@ -74,11 +74,11 @@ namespace Teams.Controllers
         }
 
         [HttpPut]
-        public IActionResult UpdateTeam([FromForm] TeamsDto teamsDto)
+        public async Task<IActionResult> UpdateTeam([FromForm] TeamsDto teamsDto)
         {
             try
             {
-                _services.Update(teamsDto);
+                await _services.Update(teamsDto);
                 return Ok();
             }
             catch (Exception e)
